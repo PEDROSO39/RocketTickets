@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./data/prax.db
+      - CORS_ORIGINS=https://your-domain.vercel.app,https://your-domain.netlify.app
+      - PRAXIO_BASE_URL=https://praxio.example.com
+      - PRAXIO_USERNAME=
+      - PRAXIO_PASSWORD=
+    restart: unless-stopped
